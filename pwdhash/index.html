@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Password Generator</title>
+	<style type="text/css">
+		* {
+			box-sizing: border-box;
+		}
+		body {
+			background-color: #fcfcfc;
+			color: #333;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			font-size: 14px;
+			line-height: 1.42857143;
+			margin: 0;
+			padding: 0;
+		}
+		h1 {
+			margin: 0;
+		}
+		input {
+			font-family: inherit;
+			font-size: inherit;
+			line-height: inherit;
+			padding: 0.25em;
+		}
+		input[type=submit] {
+			-webkit-appearance: none;
+			background-color: #337ab7;
+			border: 1px solid #2e6da4;
+			border-radius: 4px;
+			color: #fff;
+			margin: 0;
+			padding: 6px 12px;
+		}
+		label {
+			display: block;
+		}
+		p {
+			margin: 0.5em 0;
+			padding: 0;
+		}
+		#page {
+			background-color: #f9f9f9;
+			border:  1px solid #ddd;
+			border-radius: 0.4em;
+			margin: 1em auto;
+			padding: 1em;
+			width: 50%;
+		}
+		#result input {
+			font-size: 1.1em;
+			font-weight: bold;
+			outline: none !important; /* stops Chrome from putting blue glow around textbox. */
+		}
+		#result.generated input {
+			border: 2px solid #ff6a00;
+		}
+		
+		@media screen and (max-width: 600px) {
+			#page {
+				width: 90%;
+			}
+		}
+	</style>
+</head>
+<body onload="init();">
+	<div id="page">
+		<h1>Password Generator</h1>
+		
+		<form name="hashform" onsubmit="domainToLower(); pw(); return false;">
+			<p>
+				<label for="domain">Site:</label>
+				<input type="text" name="domain" id="domain" value="" class="text" required>
+			</p>
+			<p>
+				<label for="sitePassword">Password:</label>
+				<input type="password" name="sitePassword" id="sitePassword" value="" onkeydown="startOver();" class="text" required>
+			</p>
+			<p>
+				<input type="submit" name="submitButton" id="submitButton" value="Generate">
+			</p>
+			<p id="result">
+				<label for="hashedPassword">Result:</label>
+				<input autocomplete="off" type="text" name="hashedPassword" id="hashedPassword" readonly>
+			</p>
+		</form>
+
+		<p>Based on <a href="http://alexking.org/pw">Alex King&#8217;s implementation</a> of <a href="http://crypto.stanford.edu/PwdHash/">Stanford&#8217;s Web Password Hashing form</a>.</p>
+	</div>
+
+	<script type="text/javascript" src="pwdhash.min.js"></script>
+	<script type="text/javascript">
+		function domainToLower() {
+			var domainField = document.getElementById('domain');
+			domainField.value = domainField.value.toLowerCase();
+		}
+		function init() {
+			var domainField = document.getElementById('domain');
+			//if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
+			if (navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
+				domainField.type = 'url';
+			}
+			if (domainField.value == '') {
+				domainField.focus();
+			}
+			else {
+				document.getElementById('sitePassword').focus();
+			}
+		}
+		function pw() {
+			GenerateToTextField();
+			var resultField = document.getElementById('hashedPassword');
+			resultField.focus();
+			// resultField.select();
+			resultField.selectionStart = 0;
+			resultField.selectionEnd = resultField.value.length;
+		
+			document.getElementById('result').className = 'generated';
+		}
+		function startOver() {
+			document.getElementById('result').className = '';
+			document.getElementById('hashedPassword').value = '';
+		}
+	</script>
+
+</body>
+</html>
