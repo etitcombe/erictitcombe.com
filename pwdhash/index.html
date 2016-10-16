@@ -93,7 +93,7 @@
 		<p>Based on <a href="http://alexking.org/pw">Alex King&#8217;s implementation</a> of <a href="http://crypto.stanford.edu/PwdHash/">Stanford&#8217;s Web Password Hashing form</a>.</p>
 	</div>
 
-	<script type="text/javascript" src="pwdhash.min.js"></script>
+	<script type="text/javascript" src="pwdhash.js"></script>
 	<script type="text/javascript">
 		function domainToLower() {
 			var domainField = document.getElementById('domain');
@@ -101,7 +101,6 @@
 		}
 		function init() {
 			var domainField = document.getElementById('domain');
-			//if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
 			if (navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
 				domainField.type = 'url';
 			}
@@ -116,7 +115,6 @@
 			GenerateToTextField();
 			var resultField = document.getElementById('hashedPassword');
 			resultField.focus();
-			// resultField.select();
 			resultField.selectionStart = 0;
 			resultField.selectionEnd = resultField.value.length;
 		
