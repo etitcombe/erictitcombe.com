@@ -1,9 +1,11 @@
 body {
-    background-color: #efefef;
+    background-color: #fcfcfc;
+    color: #25322C;
     margin: 0 auto;
     max-width: 40em;
     padding: 0 .62em;
-    font: 1.2em/1.62em serif;
+    font: 1.2em/1.62em;
+    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 
 footer {
@@ -11,12 +13,11 @@ footer {
 }
 
 header {
-    background-color: #e5e5e5;
-    color: #efefef;
     text-align: center;
 }
 
 header h1 {
+    margin-bottom: 0;
     margin-top: 0;
 }
 
@@ -46,10 +47,6 @@ section a img {
 }
 
 #header-text {
-    display: block;
-    letter-spacing: 0.5em;
-    text-overflow: clip;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    transform: scale(1, 1.6);
-    transform-origin: left;
 }
