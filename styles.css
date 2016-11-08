@@ -38,10 +38,6 @@ section.green-border {
     border: 1px solid rgba(29, 185, 84, 0.22);
 }
 
-section.purple-border {
-    border: 1px solid rgba(72, 0, 72, 0.22);
-}
-
 section a {
     display: block;
     padding: 1em;
