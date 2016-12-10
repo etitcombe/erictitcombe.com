@@ -1,10 +1,11 @@
 body {
     background-color: #fcfcfc;
     color: #25322C;
+    line-height: 1.62em;
     margin: 0 auto;
     max-width: 40em;
     padding: 0 .62em;
-    font: 1.2em/1.62em;
+    font-size: 1.2em;
     font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 
@@ -23,6 +24,7 @@ p {
 
 section {
     border-radius: 0.4em;
+    min-height: 3.62em; /* iOS Safari < 10 requires this. 3.62 = 1 + 1 + 1.62 */
 }
 
 section.black-border {
@@ -31,7 +33,6 @@ section.black-border {
 
 section.blue-border {
     border: 1px solid rgba(0 , 99, 220, 0.22);
-    position: relative;
 }
 
 section.green-border {
@@ -49,6 +50,7 @@ section a img {
 }
 
 .grid {
+  -webkit-box-orient: vertical;
   display: flex;
   flex-flow: column;
 }
