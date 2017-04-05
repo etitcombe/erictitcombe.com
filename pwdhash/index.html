@@ -102,9 +102,6 @@
 		}
 		function init() {
 			var domainField = document.getElementById('domain');
-			if (navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {
-				domainField.type = 'url';
-			}
 			if (domainField.value == '') {
 				domainField.focus();
 			}
