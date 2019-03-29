@@ -267,30 +267,6 @@ function binl2b64(binarray)
 var SPH_kPasswordPrefix = "@@";
 
 /*
- * Returns a conforming hashed password generated from the form's field values.
- */
-function Generate()
-{
-  var uri = document.hashform.domain.value;
-  var domain = (new SPH_DomainExtractor()).extractDomain(uri);
-  var size = SPH_kPasswordPrefix.length;
-  var data = document.hashform.sitePassword.value;
-  if (data.substring(0, size) == SPH_kPasswordPrefix)
-    data = data.substring(size);
-  var result = new String(new SPH_HashedPassword(data, domain));
-  return result;
-}
-
-/*
- * Obtain a conforming hashed password and put it in the hashed password field
- */
-function GenerateToTextField()
-{
-  document.hashform.hashedPassword.value = Generate();
-  document.hashform.hashedPassword.disabled = false;
-}
-
-/*
 Copyright 2005 Collin Jackson
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

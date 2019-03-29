@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="robots" content="noindex, nofollow">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Password Generator</title>
@@ -53,12 +53,11 @@
 			width: 50%;
 		}
 		#result input {
-      font-family: Consolas, "Courier New", Courier, monospace;
+      		font-family: Consolas, "Courier New", Courier, monospace;
 			font-size: 1.2em;
-			/*font-weight: bold;*/
 			outline: none !important; /* stops Chrome from putting blue glow around textbox. */
 		}
-		#result.generated input {
+		#hashedPassword.generated {
 			border: 2px solid #ff6a00;
 		}
 		
@@ -73,10 +72,10 @@
 	<div id="page">
 		<h1>Password Generator</h1>
 		
-		<form name="hashform" onsubmit="domainToLower(); pw(); return false;">
+		<form name="hashform" onsubmit="pw(); return false;">
 			<p>
 				<label for="domain">Site:</label>
-				<input type="text" name="domain" id="domain" value="" class="text" required>
+				<input autocapitalize="off" type="text" name="domain" id="domain" value="" class="text" required>
 			</p>
 			<p>
 				<label for="sitePassword">Password:</label>
@@ -85,20 +84,25 @@
 			<p>
 				<input type="submit" name="submitButton" id="submitButton" value="Generate">
 			</p>
-			<p id="result">
-				<label for="hashedPassword">Result:</label>
-				<input autocomplete="off" type="text" name="hashedPassword" id="hashedPassword" readonly>
-			</p>
 		</form>
 
-		<p>Based on <a href="http://alexking.org/pw">Alex King&#8217;s implementation</a> of <a href="http://crypto.stanford.edu/PwdHash/">Stanford&#8217;s Web Password Hashing form</a>.</p>
+		<p id="result">
+			<label for="hashedPassword">Result:</label>
+			<input autocomplete="off" type="text" name="hashedPassword" id="hashedPassword">
+		</p>
+
+		<p>Based on <a href="http://alexking.org/pw">Alex King&#8217;s implementation</a> of 
+			<a href="http://crypto.stanford.edu/PwdHash/">Stanford&#8217;s Web Password Hashing form</a>.</p>
 	</div>
 
 	<script type="text/javascript" src="pwdhash.js"></script>
 	<script type="text/javascript">
-		function domainToLower() {
-			var domainField = document.getElementById('domain');
-			domainField.value = domainField.value.toLowerCase();
+		function generate() {
+			var uri = document.hashform.domain.value;
+			var domain = (new SPH_DomainExtractor()).extractDomain(uri);
+			var data = document.hashform.sitePassword.value;
+			var result = new String(new SPH_HashedPassword(data, domain));
+			return result;
 		}
 		function init() {
 			var domainField = document.getElementById('domain');
@@ -106,23 +110,26 @@
 				domainField.focus();
 			}
 			else {
+				document.getElementById('hashedPassword').value = '';
 				document.getElementById('sitePassword').focus();
 			}
 		}
 		function pw() {
-			GenerateToTextField();
+			var domainField = document.getElementById('domain');
+			domainField.value = domainField.value.toLowerCase();
+
 			var resultField = document.getElementById('hashedPassword');
+			resultField.className = 'generated';
+			resultField.value = generate();
 			resultField.focus();
 			resultField.selectionStart = 0;
 			resultField.selectionEnd = resultField.value.length;
-		
-			document.getElementById('result').className = 'generated';
 		}
 		function startOver() {
-			document.getElementById('result').className = '';
-			document.getElementById('hashedPassword').value = '';
+			var resultField = document.getElementById('hashedPassword');
+			resultField.className = '';
+			resultField.value = '';
 		}
 	</script>
-
 </body>
 </html>
