@@ -1,68 +1,94 @@
 body {
     background-color: #fcfcfc;
     color: #25322C;
+    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    font-size: 1.2em;
     line-height: 1.62em;
     margin: 0 auto;
-    max-width: 40em;
-    padding: 0 .62em;
-    font-size: 1.2em;
-    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    padding: 0;
 }
 
-header {
-    text-align: center;
-}
-
-header h1 {
+body > header > h1 {
+    color: lightblue;
+    letter-spacing: 0.3em;
     margin-bottom: 0;
     margin-top: 0;
-}
-
-p {
-    margin: 1em;
-}
-
-section {
-    border-radius: 0.4em;
-}
-
-section.black-border {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-section.blue-border {
-    border: 1px solid rgba(0 , 99, 220, 0.22);
-}
-
-section.green-border {
-    border: 1px solid rgba(29, 185, 84, 0.22);
-}
-
-section a {
-    display: block;
-    padding: 1em;
-    text-decoration: none;
-}
-
-section a img {
-    vertical-align: middle;
-}
-
-.grid {
-  -webkit-box-orient: vertical;
-  display: flex;
-  flex-flow: column;
-}
-
-.grid > * {
-  flex-basis: 1em;
-  flex-grow: 1;
-  margin: 0.5em 0;
-}
-
-#header-text {
-    letter-spacing: 0.3em;
+    padding: 0 1em 0.2em;
+    text-align: center;
+    text-shadow: 0.5px 0.5px 0px steelblue, 1px 1px 0px steelblue, 1.5px 1.5px 0px steelblue, 2px 2px 0px steelblue;
     text-transform: uppercase;
 }
 
-/* * { border: 1px solid crimson; } */
+header p {
+    line-height: 1em;
+    margin: 0;
+    padding: 0 1em;
+    text-align: center;
+}
+
+main {
+    margin: 0 auto;
+    width: 90%;
+}
+
+main > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+main > ul > li {
+    margin: 1em 0;
+}
+main > ul > li > a {
+    border-radius: 0.4em;
+    display: block;
+    text-decoration: none;
+    padding: 1em;
+}
+
+#exp {
+    background-image: linear-gradient(120deg, indianred, indianred 10%, 
+        gold 10%, gold 11%,
+        lightsalmon 11%, lightsalmon 20%,
+        salmon 20%, salmon 30%,
+        orange 30%, orange 44%,
+        tomato 44%);
+}
+
+#flickr-link {
+    border: 1px solid rgba(33, 107, 214, 0.5);
+    color: #216bd6;
+}
+#github-link {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: #25322C;
+}
+#spotify-link {
+    border: 1px solid rgba(30, 215, 96, 0.5);
+    color: #1DB954;
+}
+
+@media (min-width:376px) {
+    main {
+        width: 80%;
+    }
+}
+@media (min-width:779px) {
+    main {
+        width: 60%;
+    }
+    main > ul > li {
+        margin: 2em 0;
+    }
+}
+@media (min-width:1000px) {
+    main {
+        width: 50%;
+    }
+}
+@media (min-width:1400px) {
+    main {
+        width: 40%;
+    }
+}
