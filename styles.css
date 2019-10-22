@@ -24,7 +24,6 @@ p {
 
 section {
     border-radius: 0.4em;
-    min-height: 3.62em; /* iOS Safari < 10 requires this. 3.62 = 1 + 1 + 1.62 */
 }
 
 section.black-border {
