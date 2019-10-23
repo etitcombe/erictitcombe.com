@@ -89,6 +89,6 @@ main > ul > li > a {
 }
 @media (min-width:1400px) {
     main {
-        width: 40%;
+        width: 30%;
     }
 }
