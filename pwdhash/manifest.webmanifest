@@ -1,0 +1,15 @@
+{
+    "background_color": "#fcfcfc",
+    "description": "Generate a password for a domain.",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "pwdhash-icon.png",
+        "sizes": "180x180",
+        "type": "image/png"
+      }
+    ],
+    "name": "Password Generator",
+    "short_name": "PwdHash",
+    "start_url": "/pwdhash/index.html"
+  }
